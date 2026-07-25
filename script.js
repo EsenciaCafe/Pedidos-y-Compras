@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBRckUgIWW36rZ8Wv52yZnrxY5VsFatf4E",
   authDomain: "chickencrunchersapp.firebaseapp.com",
@@ -18,7 +17,6 @@ const db = getFirestore(app);
 const refTiendas = doc(db, 'cafeteria', 'bdTiendas');
 const refLista = doc(db, 'cafeteria', 'listaActiva');
 
-// Detección de Rol mediante la URL (?role=jefe)
 const urlParams = new URLSearchParams(window.location.search);
 const isJefe = urlParams.get('role') === 'jefe';
 
@@ -35,17 +33,23 @@ let listaActual = [];
 let itemsPendientes = [];
 let itemSeleccionadoIndex = null;
 
-// Mostrar botón "Nueva" solo si eres el jefe
+const tiendasBase = ['Mercadona', 'Makro', 'Frutería', 'Otros'];
+let tiendasExtra = [];
+
 if (isJefe) {
     btnNuevaLista.classList.remove('hidden');
 }
 
-// Cargar la base de datos de tiendas conocidas
+// Cargar tiendas y extraer tiendas guardadas históricamente
 getDoc(refTiendas).then(snap => {
-    if (snap.exists()) bdTiendas = snap.data();
+    if (snap.exists()) {
+        bdTiendas = snap.data();
+        const allStores = Object.values(bdTiendas);
+        tiendasExtra = [...new Set(allStores)].filter(t => !tiendasBase.includes(t));
+    }
+    renderChips();
 });
 
-// Sincronización en tiempo real
 onSnapshot(refLista, (snap) => {
     if (snap.exists()) {
         listaActual = snap.data().items || [];
@@ -77,7 +81,6 @@ btnNuevaLista.addEventListener('click', async () => {
     }
 });
 
-// Lógica de procesamiento de texto
 document.getElementById('btn-procesar').addEventListener('click', () => {
     const texto = document.getElementById('texto-pedido').value;
     const regex = /-\s*(.*?)\s*(?:—|-)\s*(.*)/;
@@ -105,7 +108,6 @@ document.getElementById('btn-procesar').addEventListener('click', () => {
     else guardarListaNube();
 });
 
-// Lógica de Asignación por Chips
 function mostrarAsignacionTiendas() {
     cambiarVista(views.tiendas);
     renderListaPendientes();
@@ -115,7 +117,6 @@ function renderListaPendientes() {
     const contenedor = document.getElementById('lista-sin-tienda');
     contenedor.innerHTML = '';
     
-    // Si ya no quedan pendientes, mostrar botón de guardar
     if (itemsPendientes.length === 0) {
         document.getElementById('btn-guardar-tiendas').classList.remove('hidden');
         return;
@@ -129,7 +130,6 @@ function renderListaPendientes() {
         contenedor.appendChild(div);
     });
 
-    // Autoseleccionar el primero
     seleccionarItemPendiente(0);
 }
 
@@ -142,35 +142,52 @@ function seleccionarItemPendiente(index) {
     });
 }
 
-// Escuchar clicks en los chips predefinidos
-document.querySelectorAll('.chip[data-tienda]').forEach(btn => {
-    btn.addEventListener('click', (e) => asignarTienda(e.target.dataset.tienda));
-});
+function renderChips() {
+    const contenedor = document.getElementById('contenedor-chips');
+    if (!contenedor) return;
+    contenedor.innerHTML = '';
+    
+    const todas = [...tiendasBase, ...tiendasExtra];
+    todas.forEach(t => {
+        const btn = document.createElement('button');
+        btn.className = 'chip';
+        btn.textContent = t;
+        btn.onclick = () => asignarTienda(t);
+        contenedor.appendChild(btn);
+    });
 
-// Escuchar el botón para añadir un chip nuevo manualmente
-document.getElementById('btn-add-tienda').addEventListener('click', () => {
-    const input = document.getElementById('nueva-tienda-input');
-    if(input.value.trim() !== '') {
-        asignarTienda(input.value.trim());
-        input.value = '';
-    }
-});
+    const inputHTML = `
+        <input type="text" id="nueva-tienda-input" class="chip-input" placeholder="+ Tienda">
+        <button class="chip btn-add-tienda" id="btn-add-tienda">Añadir</button>
+    `;
+    contenedor.insertAdjacentHTML('beforeend', inputHTML);
+
+    document.getElementById('btn-add-tienda').addEventListener('click', () => {
+        const input = document.getElementById('nueva-tienda-input');
+        const nueva = input.value.trim();
+        if(nueva !== '') {
+            if(!tiendasBase.includes(nueva) && !tiendasExtra.includes(nueva)) {
+                tiendasExtra.push(nueva);
+                renderChips(); 
+            }
+            asignarTienda(nueva);
+        }
+    });
+}
 
 function asignarTienda(nombreTienda) {
     if (itemSeleccionadoIndex === null || !itemsPendientes[itemSeleccionadoIndex]) return;
     
     const item = itemsPendientes[itemSeleccionadoIndex];
     item.tienda = nombreTienda;
-    bdTiendas[item.nombre] = nombreTienda; // Lo memoriza para futuros pedidos
+    bdTiendas[item.nombre] = nombreTienda; 
     
-    // Lo sacamos de la lista de pendientes
     itemsPendientes.splice(itemSeleccionadoIndex, 1);
     itemSeleccionadoIndex = null;
     
     renderListaPendientes();
 }
 
-// Al terminar de asignar todo, lo subimos a la nube
 document.getElementById('btn-guardar-tiendas').addEventListener('click', async () => {
     setSyncing(true);
     await setDoc(refTiendas, bdTiendas);
@@ -185,7 +202,6 @@ async function guardarListaNube() {
     setSyncing(false);
 }
 
-// Lógica de Checklist Final
 function mostrarChecklist() {
     cambiarVista(views.checklist);
     const contenedor = document.getElementById('contenedor-checklist');
@@ -209,6 +225,7 @@ function mostrarChecklist() {
                         <span class="item-name">${item.nombre}</span>
                         <span class="item-qty">${item.cantidad}</span>
                     </div>
+                    ${isJefe ? `<span class="edit-tienda" data-index="${index}">Editar</span>` : ''}
                 </div>
             `;
         });
@@ -219,6 +236,32 @@ function mostrarChecklist() {
     document.querySelectorAll('.checklist-item').forEach(el => {
         el.addEventListener('click', async (e) => {
             const idx = e.currentTarget.getAttribute('data-index');
+            
+            // Lógica si se hace clic en Editar
+            if (e.target.classList.contains('edit-tienda')) {
+                e.stopPropagation(); // Evita que se marque el checkbox
+                const item = listaActual[idx];
+                const nuevaTienda = prompt(`Nueva tienda para: ${item.nombre}`, item.tienda);
+                
+                if (nuevaTienda !== null && nuevaTienda.trim() !== '') {
+                    const t = nuevaTienda.trim();
+                    listaActual[idx].tienda = t;
+                    bdTiendas[item.nombre] = t;
+                    
+                    if(!tiendasBase.includes(t) && !tiendasExtra.includes(t)) {
+                        tiendasExtra.push(t);
+                        renderChips();
+                    }
+
+                    setSyncing(true);
+                    await setDoc(refTiendas, bdTiendas);
+                    await setDoc(refLista, { items: listaActual });
+                    setSyncing(false);
+                }
+                return;
+            }
+
+            // Lógica normal de marcar/desmarcar producto
             listaActual[idx].checked = !listaActual[idx].checked;
             setSyncing(true);
             await setDoc(refLista, { items: listaActual });
