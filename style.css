@@ -124,3 +124,17 @@ textarea:focus { border-color: var(--accent-color); }
 .item-details { flex-grow: 1; }
 .item-name { font-size: 1.05rem; font-weight: 500; display: block; }
 .item-qty { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; display: block;}
+
+
+.edit-tienda {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: #f0f0f0;
+    padding: 6px 12px;
+    border-radius: 12px;
+    margin-left: 10px;
+    font-weight: 500;
+}
+.edit-tienda:active {
+    background: #e0e0e0;
+}
