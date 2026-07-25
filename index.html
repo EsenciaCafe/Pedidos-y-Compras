@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Checklist</title>
+    <title>Checklist de Compra</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,21 +11,36 @@
         <h1>Lista de Compra</h1>
         <div class="header-actions">
             <span id="sync-indicator" class="syncing hidden">Sincronizando...</span>
-            <button id="btn-nueva-lista" class="btn-text">Nueva</button>
+            <button id="btn-nueva-lista" class="btn-text hidden">Nueva</button>
         </div>
     </header>
 
     <main>
-        <section id="view-input" class="view active">
+        <!-- Vista Jefe: Crear -->
+        <section id="view-input" class="view hidden">
             <textarea id="texto-pedido" placeholder="Hola, te paso el pedido..."></textarea>
             <button id="btn-procesar" class="btn-primary">Procesar Pedido</button>
         </section>
 
+        <!-- Vista Jefe: Asignar Tiendas con Chips -->
         <section id="view-tiendas" class="view hidden">
-            <div id="lista-sin-tienda"></div>
-            <button id="btn-guardar-tiendas" class="btn-primary">Guardar Tiendas</button>
+            <p class="instruction">Toca un producto y luego la tienda para asignarlo rápidamente.</p>
+            
+            <div class="tiendas-chips" id="contenedor-chips">
+                <button class="chip" data-tienda="Mercadona">Mercadona</button>
+                <button class="chip" data-tienda="Makro">Makro</button>
+                <button class="chip" data-tienda="Frutería">Frutería</button>
+                <button class="chip" data-tienda="Otros">Otros</button>
+                <input type="text" id="nueva-tienda-input" class="chip-input" placeholder="+ Tienda">
+                <button class="chip btn-add-tienda" id="btn-add-tienda">Añadir</button>
+            </div>
+
+            <div id="lista-sin-tienda" class="lista-seleccion"></div>
+            
+            <button id="btn-guardar-tiendas" class="btn-primary hidden">Guardar y Ver Lista</button>
         </section>
 
+        <!-- Vista Empleado/Jefe: Checklist final -->
         <section id="view-checklist" class="view hidden">
             <div id="contenedor-checklist"></div>
         </section>
