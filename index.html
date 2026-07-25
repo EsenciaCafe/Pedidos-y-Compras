@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Checklist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Compra</h1>
+        <div class="header-actions">
+            <span id="sync-indicator" class="syncing hidden">Sincronizando...</span>
+            <button id="btn-nueva-lista" class="btn-text">Nueva</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="view-input" class="view active">
+            <textarea id="texto-pedido" placeholder="Hola, te paso el pedido..."></textarea>
+            <button id="btn-procesar" class="btn-primary">Procesar Pedido</button>
+        </section>
+
+        <section id="view-tiendas" class="view hidden">
+            <div id="lista-sin-tienda"></div>
+            <button id="btn-guardar-tiendas" class="btn-primary">Guardar Tiendas</button>
+        </section>
+
+        <section id="view-checklist" class="view hidden">
+            <div id="contenedor-checklist"></div>
+        </section>
+    </main>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
