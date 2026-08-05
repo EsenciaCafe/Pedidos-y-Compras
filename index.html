@@ -1,50 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Checklist de Compra</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17352a">
+  <title>Esencia · Pedidos y compras</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Lista de Compra</h1>
-        <div class="header-actions">
-            <span id="sync-indicator" class="syncing hidden">Sincronizando...</span>
-            <button id="btn-nueva-lista" class="btn-text hidden">Nueva</button>
-        </div>
-    </header>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-    <main>
-        <!-- Vista Jefe: Crear -->
-        <section id="view-input" class="view hidden">
-            <textarea id="texto-pedido" placeholder="Hola, te paso el pedido..."></textarea>
-            <button id="btn-procesar" class="btn-primary">Procesar Pedido</button>
-        </section>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">E</span><span class="brand-copy"><strong>Esencia</strong><small>Pedidos y compras</small></span></a>
+    <span id="sync-status" class="sync-status">Conectando…</span>
+  </header>
 
-        <!-- Vista Jefe: Asignar Tiendas con Chips -->
-        <section id="view-tiendas" class="view hidden">
-            <p class="instruction">Toca un producto y luego la tienda para asignarlo rápidamente.</p>
-            
-            <div class="tiendas-chips" id="contenedor-chips">
-                <button class="chip" data-tienda="Mercadona">Mercadona</button>
-                <button class="chip" data-tienda="Makro">Makro</button>
-                <button class="chip" data-tienda="Frutería">Frutería</button>
-                <button class="chip" data-tienda="Otros">Otros</button>
-                <input type="text" id="nueva-tienda-input" class="chip-input" placeholder="+ Tienda">
-                <button class="chip btn-add-tienda" id="btn-add-tienda">Añadir</button>
-            </div>
+  <main class="shell">
+    <section id="file-warning" class="file-warning hidden">
+      <p class="eyebrow">APERTURA LOCAL BLOQUEADA</p>
+      <h1>Abre la aplicación con <span>abrir-app.cmd</span></h1>
+      <p>Chrome no permite que Firebase funcione cuando se abre directamente el archivo <strong>index.html</strong>. Cierra esta pestaña y haz doble clic en <strong>abrir-app.cmd</strong>.</p>
+    </section>
+    <section id="manager-app" class="hidden">
+      <nav class="tabs" aria-label="Secciones">
+        <button class="tab active" data-view="stock">Revisar stock</button>
+        <button class="tab" data-view="orders">Pedidos</button>
+        <button class="tab" data-view="stores">Tiendas</button>
+      </nav>
 
-            <div id="lista-sin-tienda" class="lista-seleccion"></div>
-            
-            <button id="btn-guardar-tiendas" class="btn-primary hidden">Guardar y Ver Lista</button>
-        </section>
+      <section id="view-stock" class="view active">
+        <div class="page-heading"><div><p class="eyebrow">INVENTARIO</p><h1>¿Qué hace falta?</h1><p>Revisa existencias y genera el pedido en un toque.</p></div><button id="add-product" class="button secondary">+ Producto</button></div>
+        <div class="toolbar card"><input id="search" class="search" type="search" placeholder="Buscar producto…"><div class="filters"><button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="pending">Pendientes</button><button class="filter" data-filter="buy">Para pedir</button></div></div>
+        <div id="stock-summary" class="summary-strip"></div>
+        <div id="product-list" class="product-list"></div>
+        <div class="sticky-action"><button id="create-order" class="button primary wide">Crear pedido <span id="order-count">0</span></button></div>
+      </section>
 
-        <!-- Vista Empleado/Jefe: Checklist final -->
-        <section id="view-checklist" class="view hidden">
-            <div id="contenedor-checklist"></div>
-        </section>
-    </main>
-    <script type="module" src="script.js"></script>
+      <section id="view-orders" class="view">
+        <div class="page-heading"><div><p class="eyebrow">GESTIÓN</p><h1>Pedidos</h1><p>Consulta el progreso y comparte el checklist.</p></div></div>
+        <div id="orders-list" class="orders-list"></div>
+      </section>
+
+      <section id="view-stores" class="view">
+        <div class="page-heading"><div><p class="eyebrow">CONFIGURACIÓN</p><h1>Tiendas</h1><p>Se recordará la tienda habitual de cada producto.</p></div></div>
+        <form id="store-form" class="card inline-form"><input id="store-name" required placeholder="Nueva tienda"><button class="button primary">Añadir</button></form>
+        <div id="stores-list" class="store-list"></div>
+      </section>
+      <nav class="bottom-nav manager-nav" aria-label="Navegación principal">
+        <button class="nav-button active" data-view="stock"><span>⌂</span>Stock</button>
+        <button class="nav-button" data-view="orders"><span>▤</span>Pedidos</button>
+        <button class="nav-button" data-view="stores"><span>⌖</span>Tiendas</button>
+      </nav>
+    </section>
+
+    <section id="checklist-app" class="hidden checklist-page">
+      <div class="checklist-heading"><p class="eyebrow">CHECKLIST COMPARTIDO</p><h1 id="checklist-title">Compra de Esencia</h1><p id="checklist-meta">Cargando pedido…</p></div>
+      <div id="checklist-progress" class="progress-card card"></div>
+      <div id="checklist-list"></div>
+      <div id="checklist-complete" class="complete-banner hidden">✓ Compra completada</div>
+      <nav class="bottom-nav employee-nav" aria-label="Navegación del checklist">
+        <button class="nav-button active" type="button"><span>✓</span>Checklist</button>
+        <a class="nav-button" href="./"><span>⌂</span>Gestión</a>
+      </nav>
+    </section>
+  </main>
+
+  <dialog id="order-dialog">
+    <form method="dialog" class="dialog-card">
+      <div class="dialog-head"><div><p class="eyebrow">NUEVO PEDIDO</p><h2>Revisar y asignar</h2></div><button class="icon-button" value="cancel" aria-label="Cerrar">×</button></div>
+      <p class="muted">Asigna una tienda a los productos que aún no la tengan.</p>
+      <div id="draft-list" class="draft-list"></div>
+      <label class="field">Nota para el empleado<textarea id="order-note" placeholder="Ej. Comprar antes de las 12:00"></textarea></label>
+      <div class="dialog-actions"><button value="cancel" class="button secondary">Cancelar</button><button id="save-order" value="default" class="button primary">Crear y compartir</button></div>
+    </form>
+  </dialog>
+
+  <script>
+    if (location.protocol === "file:") {
+      document.getElementById("file-warning").classList.remove("hidden");
+      document.getElementById("sync-status").textContent = "Necesita servidor local";
+    }
+  </script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>

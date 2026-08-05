@@ -1,0 +1,429 @@
+[
+    {
+        "id":  "34621b68-ce3e-4d2c-ab4c-146d49f0224c",
+        "nombre":  "Salmon",
+        "unidad":  "Paquete",
+        "stockActual":  0,
+        "stockMax":  15
+    },
+    {
+        "id":  "1616e86e-6011-4772-abb6-8586c15a9684",
+        "nombre":  "Jamon serrano",
+        "unidad":  "Paquete",
+        "stockActual":  5,
+        "stockMax":  10
+    },
+    {
+        "id":  "56d30455-9264-4cea-9695-13e2520f3c14",
+        "nombre":  "Queso sandwich",
+        "unidad":  "Paquete",
+        "stockActual":  1,
+        "stockMax":  2
+    },
+    {
+        "id":  "57d82a83-28a8-49ed-8a14-c336400c1652",
+        "nombre":  "Jamón sandwich",
+        "unidad":  "Paquete",
+        "stockActual":  1,
+        "stockMax":  3
+    },
+    {
+        "id":  "c7d4a03f-2a24-41f2-b692-09711c9805a9",
+        "nombre":  "Queso Crema",
+        "unidad":  "Cubo 2kg",
+        "stockActual":  1,
+        "stockMax":  2
+    },
+    {
+        "id":  "8ac3ec35-3d1a-47db-aa68-3ed435c9a686",
+        "nombre":  "Nata montada",
+        "unidad":  "Lata",
+        "stockActual":  6,
+        "stockMax":  10
+    },
+    {
+        "id":  "a4af5b52-5298-4e83-9e3f-64df865f3c16",
+        "nombre":  "Nata para montar",
+        "unidad":  "Brick",
+        "stockActual":  2,
+        "stockMax":  6
+    },
+    {
+        "id":  "044a3284-f59f-413b-b5b4-7cc8427e3819",
+        "nombre":  "Matcha",
+        "unidad":  "Caja",
+        "stockActual":  16,
+        "stockMax":  16
+    },
+    {
+        "id":  "69a34ddd-321c-4ea5-8bbc-b57c70c2fb38",
+        "nombre":  "Mermelada Fresa",
+        "unidad":  "Bote",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "0bdb5536-38aa-4b1d-8d4b-2816db5c0541",
+        "nombre":  "Mermelada Higos",
+        "unidad":  "Bote",
+        "stockActual":  1,
+        "stockMax":  2
+    },
+    {
+        "id":  "85623721-a971-45a4-88d2-77e41c93c88a",
+        "nombre":  "Sirope Avellanas Monin",
+        "unidad":  "Botella",
+        "stockActual":  0,
+        "stockMax":  2
+    },
+    {
+        "id":  "71a45b7f-2830-40ea-83c4-880633d383c7",
+        "nombre":  "Sirope Pistacho Monin",
+        "unidad":  "Botella",
+        "stockActual":  1,
+        "stockMax":  2
+    },
+    {
+        "id":  "b26267c6-ec8f-459a-87ae-c6b9995ed994",
+        "nombre":  "Sirope Vainilla Rioba",
+        "unidad":  "Botella",
+        "stockActual":  4,
+        "stockMax":  5
+    },
+    {
+        "id":  "9e787843-3d77-4146-956f-d07c5147356d",
+        "nombre":  "Sirope Fresa Rioba",
+        "unidad":  "Botella",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "3f3fd7bb-ae39-4fe8-8fb8-4c5ee922213b",
+        "nombre":  "Sirope Caramelo Rioba",
+        "unidad":  "Botella",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "da1568a4-6066-450a-949b-ce21c06d817c",
+        "nombre":  "Sirope Mango Rioba",
+        "unidad":  "Botella",
+        "stockActual":  2,
+        "stockMax":  3
+    },
+    {
+        "id":  "779b59a7-195d-42c7-8e51-bacbb45e173d",
+        "nombre":  "Crema Lotus",
+        "unidad":  "Bote 1,6kg",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "26e4b483-ce09-4f3a-8993-c5fc8c764517",
+        "nombre":  "Mantequilla Mani",
+        "unidad":  "Bote",
+        "stockActual":  3,
+        "stockMax":  3
+    },
+    {
+        "id":  "dccced6b-eb34-42a5-8ba0-91f14260c20b",
+        "nombre":  "Topping Lotus",
+        "unidad":  "Botella",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "e93191bd-98db-499a-b295-1083d4ffeb1f",
+        "nombre":  "Topping dulce Leche",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  3
+    },
+    {
+        "id":  "b05cae0f-bec4-4f5f-8fa7-d53c24692468",
+        "nombre":  "Topping Fresa",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "724e3c4b-f0b4-4f40-9498-034ae3d94de1",
+        "nombre":  "Topping Chocolate Blanco",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "a5722fa4-b620-46ab-9ec8-7dd30d1816c7",
+        "nombre":  "Topping Caramelo",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "ee15f4d5-5b45-488e-bb82-a1f6c5eade06",
+        "nombre":  "Topping Caramelo Salado",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  3
+    },
+    {
+        "id":  "14e0178a-b5de-4114-914f-93d6466e6f80",
+        "nombre":  "Topping Chocolate",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "2948f5c0-2500-4460-833a-c3f2ff93115a",
+        "nombre":  "Miel",
+        "unidad":  "",
+        "stockActual":  5,
+        "stockMax":  3
+    },
+    {
+        "id":  "2d3657a8-6a07-4fef-ae91-7e6f2f2f7a4d",
+        "nombre":  "Sirope Arce",
+        "unidad":  "",
+        "stockActual":  0,
+        "stockMax":  3
+    },
+    {
+        "id":  "6ac68b7d-fc8f-4c5c-8c4c-8228b786c196",
+        "nombre":  "Nutella",
+        "unidad":  "Bolsa 1kg",
+        "stockActual":  6,
+        "stockMax":  12
+    },
+    {
+        "id":  "5d27c4a6-268e-4522-916c-cd981a39f2cb",
+        "nombre":  "Agua de coco",
+        "unidad":  "Brick",
+        "stockActual":  7,
+        "stockMax":  8
+    },
+    {
+        "id":  "1c4b983a-0457-43fa-aa34-b76222f407da",
+        "nombre":  "Leche avena",
+        "unidad":  "Brick",
+        "stockActual":  4,
+        "stockMax":  10
+    },
+    {
+        "id":  "99476d6d-d17f-4ef2-b2b0-827d863898f7",
+        "nombre":  "Leche soja",
+        "unidad":  "Brick",
+        "stockActual":  2,
+        "stockMax":  5
+    },
+    {
+        "id":  "b36c989c-afb8-4af1-abb4-2258227a13d5",
+        "nombre":  "Zumo manzana",
+        "unidad":  "Brick",
+        "stockActual":  5,
+        "stockMax":  10
+    },
+    {
+        "id":  "8350818e-f3af-4cba-8edf-4b4aa15379c5",
+        "nombre":  "Muesli",
+        "unidad":  "Bolsa",
+        "stockActual":  4,
+        "stockMax":  4
+    },
+    {
+        "id":  "4729070c-19d0-4c1f-ba72-a89912c6e34d",
+        "nombre":  "Avena",
+        "unidad":  "Bolsa",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "226b6d7d-35c8-4e2c-bee5-958e06e13c56",
+        "nombre":  "Oreo triturado",
+        "unidad":  "",
+        "stockActual":  1,
+        "stockMax":  1
+    },
+    {
+        "id":  "acf15bfd-82c5-4efc-9cf3-69d6d102794d",
+        "nombre":  "lotus triturado",
+        "unidad":  "",
+        "stockActual":  1,
+        "stockMax":  1
+    },
+    {
+        "id":  "97a062be-f527-4905-8847-646fc8c47ee1",
+        "nombre":  "Pistacho Triturado",
+        "unidad":  "",
+        "stockActual":  1,
+        "stockMax":  1
+    },
+    {
+        "id":  "4ec2ba54-f84c-46d2-a39a-ad2724a186b9",
+        "nombre":  "Aroma Vainilla",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "5d816051-d897-4680-9b09-3fe1992f94b8",
+        "nombre":  "Sal",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "a61d85f0-84ef-492f-aad0-bfab46d1943d",
+        "nombre":  "Polvo hornear",
+        "unidad":  "",
+        "stockActual":  1,
+        "stockMax":  2
+    },
+    {
+        "id":  "f8308046-7603-4c1c-895c-7e81057182e0",
+        "nombre":  "Canela",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "ffec15e0-ad65-4536-ab46-82d7bad904bb",
+        "nombre":  "Azucar Glass",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "323859f2-bcb1-4e68-941b-5a091f356872",
+        "nombre":  "Harina",
+        "unidad":  "Kg",
+        "stockActual":  0,
+        "stockMax":  10
+    },
+    {
+        "id":  "9a315165-26b2-4a41-833c-510d86451de0",
+        "nombre":  "Leche masa",
+        "unidad":  "Packs",
+        "stockActual":  1,
+        "stockMax":  2
+    },
+    {
+        "id":  "c332c410-4fb5-4aa9-a6f7-30370acda0ef",
+        "nombre":  "Leche cafe",
+        "unidad":  "Packs",
+        "stockActual":  1,
+        "stockMax":  6
+    },
+    {
+        "id":  "64c8bb86-f15c-4b75-8acf-695c2e1f588c",
+        "nombre":  "Crema Pistacho",
+        "unidad":  "Cubo",
+        "stockActual":  1,
+        "stockMax":  2
+    },
+    {
+        "id":  "a6846397-3497-4bdf-887d-7162cc7dcc34",
+        "nombre":  "Huevos",
+        "unidad":  "",
+        "stockActual":  1,
+        "stockMax":  3
+    },
+    {
+        "id":  "16446a7a-84ec-48a4-af7c-8f6fbf0bf14f",
+        "nombre":  "Bacon",
+        "unidad":  "Pack 1kg",
+        "stockActual":  2,
+        "stockMax":  3
+    },
+    {
+        "id":  "306a33dc-c3d5-41af-b13d-bf53987477c8",
+        "nombre":  "Mantequilla",
+        "unidad":  "Caja",
+        "stockActual":  0,
+        "stockMax":  1
+    },
+    {
+        "id":  "51f39a85-9131-4b71-9f81-1dacb09faa66",
+        "nombre":  "Helado Vainilla",
+        "unidad":  "",
+        "stockActual":  1,
+        "stockMax":  1
+    },
+    {
+        "id":  "811b96fc-4f33-440f-9579-a67168ae07d4",
+        "nombre":  "Tiramisú",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  3
+    },
+    {
+        "id":  "17ff707c-1130-4777-b9c4-2e37be794585",
+        "nombre":  "Aceite mesas",
+        "unidad":  "Botella",
+        "stockActual":  2,
+        "stockMax":  3
+    },
+    {
+        "id":  "3dc9c43b-30d6-4751-bfeb-5bbf1a88d093",
+        "nombre":  "Aceite masa",
+        "unidad":  "5L",
+        "stockActual":  0,
+        "stockMax":  1
+    },
+    {
+        "id":  "57e96e6e-e853-44f5-be83-4e18e8316b07",
+        "nombre":  "Virutas Chocolate",
+        "unidad":  "Tupper",
+        "stockActual":  1,
+        "stockMax":  1
+    },
+    {
+        "id":  "b39028b2-2ecd-4965-b5b8-675110b90795",
+        "nombre":  "Tomate seco en aceite",
+        "unidad":  "",
+        "stockActual":  0,
+        "stockMax":  1
+    },
+    {
+        "id":  "8181bfd4-9b1c-46bb-8dd6-9e0cb3e3bcbb",
+        "nombre":  "Bolsas plasticas de asa",
+        "unidad":  "Paquetes",
+        "stockActual":  1,
+        "stockMax":  1
+    },
+    {
+        "id":  "2c2eab11-f909-4929-ac2c-fae6d7b0adf4",
+        "nombre":  "Harina de Avena",
+        "unidad":  "",
+        "stockActual":  2,
+        "stockMax":  2
+    },
+    {
+        "id":  "ae1960a2-8440-4d2f-812a-b4814631f196",
+        "nombre":  "Cacao polvo 0% (mercadona)",
+        "unidad":  "",
+        "stockActual":  1,
+        "stockMax":  1
+    },
+    {
+        "id":  "82b4131f-067c-410e-a373-c0c378842d2a",
+        "nombre":  "Sesamo negro",
+        "unidad":  "",
+        "stockActual":  1,
+        "stockMax":  1
+    },
+    {
+        "id":  "6d598522-1b4c-4db6-875d-404d14926d8c",
+        "nombre":  "KitKat triturado",
+        "unidad":  "",
+        "stockActual":  0,
+        "stockMax":  1
+    },
+    {
+        "id":  "ea009002-bd27-4d8e-9f51-d1556977aa48",
+        "nombre":  "Azucar morena",
+        "unidad":  "Kg",
+        "stockActual":  0,
+        "stockMax":  1
+    }
+]
